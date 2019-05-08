@@ -9,7 +9,8 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <input type="text" placeholder="Digite o que deseja buscar..." ng-model="buscador" class="form-control">
+      <%= link_to 'Ver', dashboard_show_path %>
+      <input type="text" placeholder="Digite o que deseja buscar..." ng-model="buscador" class="form-control" ng-change="filterEvents(buscador)">
       <table class="table table-dark table-striped">
         <tr>
           <th>Name</th>
@@ -17,14 +18,14 @@
           <th>Description</th>
           <th>Place</th>
         </tr>
-        <tr ng-repeat='event in events | filter: {name: buscador}'>
+        <tr ng-repeat='event in events'>
           <td>{{event.name}}</td>
           <td>{{event.event_date}}</td>
           <td>{{event.description}}</td>
           <td>{{event.place}}</td>
         </tr>
       </table>
-       <form class="form-inline" ng-submit="addEvent(event)">
+       <form class="form-inline" ng-submit="addEvent()">
           <div class="form-group">
             <input type="text" class="form-control" name="name" placeholder="Name" ng-model="event.name" />
           </div>
